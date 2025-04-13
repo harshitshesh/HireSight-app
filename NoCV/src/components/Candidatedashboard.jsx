@@ -1,5 +1,5 @@
 import React from "react";
-import Challengelist from "./components/Challengelist";
+import Challengelist from "./Challengelist";
 
 function Candidatedash(){
     return (

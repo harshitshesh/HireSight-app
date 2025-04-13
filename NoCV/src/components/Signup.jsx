@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";  
 
 function Signup() {
   const [email, setemail] = useState("");
@@ -15,19 +15,23 @@ function Signup() {
     e.preventDefault();
     try {
       let credential = await createUserWithEmailAndPassword(auth, email, password);
+     
+   
     
       await setDoc(doc(db, "users", credential.user.uid), {
         email,
+       
         role,
       });
 
+  
       if (role === "comp") {
         navigate("/comdashboard");
       } else {
         navigate("/candashboard");
       }
     } catch (err) {
-      
+     
         alert("Something went wrong, please try again later.");
      
     }
